@@ -2,6 +2,10 @@ AWS Networking: Arquitetura de VPC e Deploy de Servidor Web
 Visão Geral
 
 Este projeto consistiu na criação de uma infraestrutura de rede personalizada na AWS para um cenário corporativo. O objetivo foi construir uma VPC (Virtual Private Cloud) do zero, garantindo a segregação de tráfego entre camadas públicas e privadas, além de configurar a conectividade necessária para um servidor web Apache.
+
+<img width="1114" height="511" alt="image" src="https://github.com/user-attachments/assets/708324bb-dd21-431f-890f-b71f2b0c2d94" />
+
+
 Arquitetura de Rede Implementada
 
 A infraestrutura foi desenhada para ser segura e escalável, utilizando os seguintes componentes:
