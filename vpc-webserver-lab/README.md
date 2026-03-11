@@ -1,24 +1,37 @@
-Implementação de Rede VPC e Servidor Web na AWS
+AWS Networking: Arquitetura de VPC e Deploy de Servidor Web
+Visão Geral
 
-Descrição:
-Este projeto demonstra a criação de uma infraestrutura de rede isolada e segura na AWS, utilizando uma VPC (Virtual Private Cloud), subnets públicas e privadas em múltiplas zonas de disponibilidade, e a implantação de um servidor Apache (EC2) com script de automação.
+Este projeto consistiu na criação de uma infraestrutura de rede personalizada na AWS para um cenário corporativo. O objetivo foi construir uma VPC (Virtual Private Cloud) do zero, garantindo a segregação de tráfego entre camadas públicas e privadas, além de configurar a conectividade necessária para um servidor web Apache.
+Arquitetura de Rede Implementada
 
-Arquitetura do Projeto:
+A infraestrutura foi desenhada para ser segura e escalável, utilizando os seguintes componentes:
 
-    VPC: 10.0.0.0/16
+    VPC: Rede isolada com bloco CIDR 10.0.0.0/16.
 
-    Subnets: 2 Públicas (para tráfego web) e 2 Privadas (para banco de dados/back-end).
+    Subnets:
 
-    Segurança: Security Groups configurados para permitir tráfego HTTP (porta 80).
+        Públicas: Localizadas em duas Zonas de Disponibilidade (AZs), permitindo acesso direto à internet via Internet Gateway.
 
-    Instância: EC2 T3.micro com Amazon Linux 2.
+        Privadas: Isoladas da internet externa, utilizando um NAT Gateway para permitir apenas saídas controladas (atualizações de software).
 
-    Conectividade: Internet Gateway para acesso externo e NAT Gateway para permitir que subnets privadas baixem atualizações.
+    Roteamento: Tabelas de rotas distintas para gerenciar o fluxo de tráfego entre as subnets e o mundo externo.
 
-Destaques Técnicos:
+    Security Groups: Firewall virtual configurado para permitir apenas tráfego na porta 80 (HTTP) vindo de qualquer origem IPv4.
 
-    Alta Disponibilidade: Configuração de subnets em diferentes Zonas de Disponibilidade (us-west-2a e us-west-2b).
+Tecnologias e Serviços
 
-    User Data Script: Automação da instalação do servidor Apache, PHP e deploy da aplicação via script Bash no provisionamento da instância.
+    Amazon VPC: Subnets, Route Tables, Internet Gateway e NAT Gateway.
 
-    Segurança de Rede: Separação lógica de camadas (Public vs Private) e aplicação de regras de firewall (Security Groups).
+    Amazon EC2: Instância t3.micro rodando Amazon Linux 2.
+
+    Apache Web Server: Instalado via User Data Script no momento do lançamento.
+
+    Bash Scripting: Automação do deploy da aplicação web.
+
+Script de Inicialização (User Data)
+
+Para garantir que o servidor subisse pronto para o uso, utilizei o seguinte script de automação Bash
+
+Conclusão
+
+A implementação bem-sucedida desta arquitetura demonstra o domínio sobre os fundamentos de rede na nuvem. A separação entre subnets públicas e privadas é uma boa prática de segurança essencial para proteger dados sensíveis enquanto mantém serviços acessíveis ao público.
