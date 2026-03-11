@@ -4,6 +4,9 @@ Visão Geral
 Este projeto demonstra o provisionamento e a gestão de instâncias Amazon EC2 utilizando dois métodos: o Console de Gerenciamento da AWS e a AWS CLI (Command Line Interface). O objetivo principal foi configurar um Bastion Host para servir de ponto de entrada seguro e, a partir dele, automatizar o deploy de um servidor web em uma infraestrutura de rede pré-existente.
 Arquitetura do Projeto
 
+<img width="928" height="702" alt="image" src="https://github.com/user-attachments/assets/1ce45efd-41bf-4bb0-b560-e9318e09b9b4" />
+
+
 A solução implementada segue o padrão de segurança de camadas:
 
     Bastion Host: Uma instância EC2 em subnet pública configurada com uma IAM Role (Bastion-Role), permitindo a execução de comandos da AWS CLI sem a necessidade de chaves de acesso (Access Keys) expostas.
